@@ -1,7 +1,5 @@
 # scMarkerAnno: Single-Cell RNA-seq Marker Gene Identification and Annotation
 
-![R-CMD-check](https://github.com/Kfang666/scMarkerAnno/workflows/R-CMD-check/badge.svg)(https://codecov.io/gh/Kfang666/scMarkerAnno)
-
 ## Overview
 
 `scMarkerAnno` is an R package designed to streamline the analysis of single-cell RNA-sequencing (scRNA-seq) data. 
