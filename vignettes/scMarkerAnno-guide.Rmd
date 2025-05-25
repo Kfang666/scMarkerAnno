@@ -1,0 +1,28 @@
+---
+title: "scMarkerAnno: Single-Cell RNA-seq Analysis Workflow"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{scMarkerAnno Workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+The `scMarkerAnno` package provides a comprehensive workflow for processing single-cell RNA-seq data, 
+identifying marker genes, and performing cell type annotation.
+
+# Installation
+
+To install the development version from GitHub:
+
+```r
+# 安装devtools包（如果尚未安装）
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+
+# 安装scMarkerAnno包
+devtools::install_github("Kfang666/scMarkerAnno")

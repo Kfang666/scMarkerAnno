@@ -1,0 +1,24 @@
+Package: scMarkerAnno
+Title: Single-Cell RNA-seq Marker Gene Identification and Annotation
+Version: 1.0.0
+Authors@R: person("Kai", "Fang", email = "244163777@qq.com", role = c("aut", "cre"))
+Description: A comprehensive workflow for processing single-cell RNA-seq data, 
+  identifying marker genes, and performing cell type annotation.
+License: GPL-3
+Depends:
+    R (>= 4.4.2),
+    Seurat (>= 5.3.0),
+    dplyr (>= 1.1.4),
+    harmony (>= 1.2.3),
+    ggplot2 (>= 3.5.2)
+Imports:
+    methods
+Suggests:
+    testthat (>= 3.0.0),
+    knitr (>= 1.30),
+    rmarkdown (>= 2.5)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+VignetteBuilder: knitr
+

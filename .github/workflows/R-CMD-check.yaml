@@ -1,0 +1,60 @@
+name: R-CMD-check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  R-CMD-check:
+    runs-on: ubuntu-latest
+    container:
+      image: rocker/verse:4.4  # 使用支持 R >= 4.4 的镜像
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup cache for R packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/R/x86_64-pc-linux-gnu-library/4.4
+            ~/.cache/R
+          key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
+          restore-keys: |
+            ${{ runner.os }}-r-
+
+      - name: Install system dependencies
+        run: |
+          apt-get update -qq
+          apt-get install -y \
+            libcurl4-openssl-dev \
+            libxml2-dev \
+            libfontconfig1-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            libfreetype6-dev \
+            libpng-dev \
+            libtiff5-dev \
+            libjpeg-dev \
+            libopenblas-dev \
+            libhdf5-dev \         # 支持 Seurat 的 HDF5 格式
+            libgl1 \
+            libglu1-mesa-dev \
+            libxt-dev
+
+      - name: Install R check tools
+        run: |
+          install.packages(c("remotes", "rcmdcheck"), quiet = TRUE)
+        shell: Rscript {0}
+
+      - name: Install package dependencies
+        run: |
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Check package with R CMD check
+        run: |
+          rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "warning")
+        shell: Rscript {0}
